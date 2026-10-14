@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-secondary-fixed-variant":"#7f2b00","on-primary-fixed":"#2a1700","inverse-on-surface":"#2e3036","on-tertiary":"#00354a","on-background":"#e1e2ea","surface":"#111319","on-tertiary-fixed-variant":"#004c69","on-secondary":"#5a1c00","error":"#ffb4ab","surface-container-lowest":"#0b0e13","error-container":"#93000a","tertiary-fixed":"#c4e7ff","on-error-container":"#ffdad6","surface-container-low":"#191c21","on-secondary-fixed":"#370e00","on-primary-container":"#613b00","on-secondary-container":"#4f1700","on-error":"#690005","surface-tint":"#ffb95f","primary":"#ffc174","surface-bright":"#36393f","surface-container-high":"#272a30","primary-container":"#f59e0b","primary-fixed":"#ffddb8","outline":"#a08e7a","on-surface":"#e1e2ea","secondary-fixed-dim":"#ffb599","surface-dim":"#111319","surface-container":"#1d2025","on-surface-variant":"#d8c3ad","primary-fixed-dim":"#ffb95f","tertiary-container":"#38bdf8","on-primary":"#472a00","background":"#111319","on-tertiary-fixed":"#001e2c","inverse-surface":"#e1e2ea","outline-variant":"#534434","on-tertiary-container":"#004965","secondary-container":"#f66018","surface-variant":"#32353b","on-primary-fixed-variant":"#653e00","secondary":"#ffb599","secondary-fixed":"#ffdbce","tertiary-fixed-dim":"#7bd0ff","tertiary":"#8ed5ff","surface-container-highest":"#32353b","inverse-primary":"#855300"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"margin":"2rem","gutter-sm":"0.75rem","space-xl":"2.5rem","gutter-lg":"2rem","space-lg":"1.5rem","space-md":"1rem","gutter":"1.5rem","space-sm":"0.5rem","space-xs":"0.25rem","margin-mobile":"1rem"},"fontFamily":{"label-sm":["JetBrains Mono"],"headline-xl-mobile":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"label-lg":["JetBrains Mono"],"headline-lg":["Plus Jakarta Sans"],"label-md":["JetBrains Mono"],"headline-xl":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"stat-display":["JetBrains Mono"],"headline-md":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"]},"fontSize":{"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.08em","fontWeight":"500"}],"headline-xl-mobile":["30px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.06em","fontWeight":"500"}],"headline-xl":["40px",{"lineHeight":"48px","letterSpacing":"-0.03em","fontWeight":"700"}],"body-lg":["16px",{"lineHeight":"26px","fontWeight":"400"}],"stat-display":["32px",{"lineHeight":"36px","letterSpacing":"-0.04em","fontWeight":"700"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary selection:text-on-primary"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.4)] border-b border-outline-variant/30"><div class="h-16 max-w-7xl mx-auto px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 rounded bg-surface-container-high border border-outline-variant flex items-center justify-center"><span class="material-symbols-outlined text-primary text-[18px]">local_fire_department</span></div><div class="flex flex-col"><span class="font-label-lg text-label-lg tracking-widest text-on-surface uppercase">THE WYNTER ARC</span><span class="font-label-sm text-label-sm text-outline tracking-wider uppercase">Forge your fate.</span></div></div><div class="h-6 w-[1px] bg-outline-variant/40 hidden md:block"></div><nav class="hidden md:flex items-center gap-space-xs" data-active-classes="text-primary border-b-2 border-primary-container bg-surface-container-low"><a class="font-label-md text-label-md uppercase px-space-md py-space-sm rounded-t text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="#">Dashboard</a><a aria-current="page" class="font-label-md uppercase px-space-md py-space-sm rounded-t transition-colors text-primary border-b-2 border-primary-container bg-surface-container-low" data-path="daily-tracker" href="#">Daily Tracker</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center bg-surface-container-low border border-outline-variant/50 rounded p-[2px]"><button class="font-label-sm text-label-sm uppercase px-space-sm py-[2px] rounded text-primary bg-surface-container font-semibold" type="button">2024</button><button class="font-label-sm text-label-sm uppercase px-space-sm py-[2px] rounded text-on-surface-variant hover:text-on-surface" type="button">2025</button><div class="h-3 w-[1px] bg-outline-variant/40 mx-1"></div><button class="font-label-sm text-label-sm uppercase px-space-sm py-[2px] rounded text-primary font-semibold" type="button">OCT</button><button class="font-label-sm text-label-sm uppercase px-space-sm py-[2px] rounded text-on-surface-variant hover:text-on-surface" type="button">NOV</button><button class="font-label-sm text-label-sm uppercase px-space-sm py-[2px] rounded text-on-surface-variant hover:text-on-surface" type="button">DEC</button></div><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-[3px] rounded bg-surface-container-low border border-outline-variant/40"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Synced to Sheets</span></div><div class="flex items-center gap-space-sm"><button aria-label="Settings" class="w-8 h-8 rounded bg-surface-container-low border border-outline-variant/40 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">settings</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-[0_0_8px_rgba(255,193,116,0.2)]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-80px)]"><div class="max-w-7xl mx-auto px-margin py-space-lg"><div class="flex flex-col w-full">
+<!-- Status & Historical Log Notice -->
+<div class="mb-space-md p-space-sm bg-surface-container-low rounded flex flex-col sm:flex-row items-center justify-between gap-space-sm shadow-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-primary text-[18px]">history_edu</span>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant truncate">
+        Historical Ledger Entry • Editing Nov 14, 2024 • Recalculates Apps Script sync and current 38-day streak
+      </span>
+</div>
+<div class="flex items-center gap-space-md flex-shrink-0">
+<span class="font-label-sm text-label-sm text-outline flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+        Target Threshold: 75%
+      </span>
+<button class="font-label-sm text-label-sm uppercase text-primary hover:text-primary-fixed transition-colors flex items-center gap-space-xs" id="toggle-jump-calendar" type="button">
+<span class="material-symbols-outlined text-[14px]">calendar_month</span>
+        Jump to Date
+      </button>
+</div>
+</div>
+<!-- Hidden Quick Date Jump Tray -->
+<div class="hidden mb-space-md p-space-md bg-surface-container-high rounded shadow-xl" id="calendar-jump-tray">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase text-primary">Jump to Anvil Node:</span>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-[2px] bg-surface-container-lowest rounded text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface" type="button">Nov 11</button>
+<button class="px-space-sm py-[2px] bg-surface-container-lowest rounded text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface" type="button">Nov 12</button>
+<button class="px-space-sm py-[2px] bg-surface-container-lowest rounded text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface" type="button">Nov 13</button>
+<button class="px-space-sm py-[2px] bg-primary text-on-primary font-label-sm text-label-sm font-semibold rounded shadow-sm" type="button">Nov 14 (Today)</button>
+<button class="px-space-sm py-[2px] bg-surface-container-lowest rounded text-outline-variant font-label-sm text-label-sm cursor-not-allowed" type="button">Nov 15</button>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<input class="bg-surface-container-lowest text-on-surface font-label-sm text-label-sm px-space-sm py-space-xs rounded outline-none shadow-inner" type="date" value="2024-11-14"/>
+<button class="px-space-sm py-space-xs bg-surface-container rounded text-primary font-label-sm text-label-sm uppercase hover:bg-surface-container-highest" type="button">Load</button>
+</div>
+</div>
+</div>
+<!-- 1. Top Daily Control Bar -->
+<div class="bg-surface-container rounded p-space-md shadow-md mb-space-lg relative overflow-hidden">
+<!-- Active Amber Glow Progress Bar at Top -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-surface-container-lowest">
+<div class="h-full bg-gradient-to-r from-primary via-primary-container to-secondary-container transition-all duration-500 shadow-[0_0_12px_rgba(245,158,11,0.6)]" id="header-progress-fill" style="width: 63.63%;"></div>
+</div>
+<div class="pt-space-xs flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<!-- Date Selector & Stepper -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="flex items-center bg-surface-container-lowest rounded p-1 shadow-inner">
+<button class="px-space-sm py-space-xs rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors flex items-center font-label-sm text-label-sm uppercase" id="prev-day-btn" title="Previous Day" type="button">
+<span class="material-symbols-outlined text-[16px] mr-1">arrow_back</span>
+            Yesterday
+          </button>
+<div class="h-4 w-[1px] bg-surface-container-high mx-space-xs"></div>
+<div class="px-space-md py-space-xs flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-md text-label-md text-on-surface uppercase tracking-wider font-semibold">Thursday • Nov 14, 2024</span>
+</div>
+<div class="h-4 w-[1px] bg-surface-container-high mx-space-xs"></div>
+<button class="px-space-sm py-space-xs rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors flex items-center font-label-sm text-label-sm uppercase" id="next-day-btn" title="Next Day" type="button">
+            Tomorrow
+            <span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Real-time Badge & Save Status & Settings Trigger -->
+<div class="flex items-center flex-wrap gap-space-md">
+<!-- Completion Metric Badge -->
+<div class="flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-space-xs rounded shadow-inner">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">Strikes Landed</span>
+<div class="flex items-baseline gap-1">
+<span class="font-stat-display text-stat-display text-primary font-bold" id="strike-count">7</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">/ 11 Complete</span>
+</div>
+</div>
+<div class="ml-space-sm px-space-sm py-0.5 rounded bg-primary-container/20 text-primary font-label-md text-label-md font-bold" id="strike-percentage">
+            64%
+          </div>
+</div>
+<!-- Sync Feedback -->
+<div class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-space-xs rounded shadow-sm">
+<span class="material-symbols-outlined text-primary text-[16px] animate-spin" id="sync-icon" style="animation-duration: 3s;">cloud_sync</span>
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider" id="sync-label">Synced to Sheets</span>
+<span class="font-label-sm text-[9px] text-outline tracking-tight" id="sync-timestamp">Last commit: 21:04:12</span>
+</div>
+<button class="ml-space-xs p-1 rounded hover:bg-surface-container text-outline hover:text-primary transition-colors" id="force-sync-btn" title="Force Sheet Re-sync" type="button">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+</button>
+</div>
+<!-- Forge Threshold Settings Popover Trigger -->
+<div class="relative">
+<button aria-label="Forge Thresholds" class="p-space-sm rounded bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors shadow-sm flex items-center justify-center" id="forge-settings-btn" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+<!-- In-Page Settings Popover (Configurable Daily Success Threshold) -->
+<div class="hidden absolute right-0 top-12 z-40 w-80 bg-surface-container-high rounded p-space-md shadow-2xl" id="forge-settings-modal">
+<div class="flex items-center justify-between pb-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">local_fire_department</span>
+<span class="font-label-md text-label-md uppercase text-on-surface font-semibold">Forge Thresholds</span>
+</div>
+<button class="text-outline hover:text-on-surface" id="close-settings-btn" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<div class="space-y-space-md">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Daily Pass Threshold</span>
+<span class="font-label-sm text-label-sm text-primary font-bold" id="threshold-val">75%</span>
+</div>
+<input class="w-full accent-primary-container cursor-pointer" id="threshold-slider" max="100" min="50" type="range" value="75"/>
+<span class="font-body-sm text-body-sm text-outline block mt-1">Requires 8 of 11 habits to maintain tempered strike status.</span>
+</div>
+<div class="pt-space-xs">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Streak Min. Ratio</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">70%</span>
+</div>
+<input class="w-full accent-secondary cursor-pointer" max="90" min="50" type="range" value="70"/>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Winter Grace Token</span>
+<span class="font-body-sm text-body-sm text-outline">1 emergency miss/mo</span>
+</div>
+<input checked="" class="w-4 h-4 rounded bg-surface-container-lowest accent-primary" type="checkbox"/>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Weekly Quota Logic</span>
+<span class="font-body-sm text-body-sm text-outline">Weight across rolling 7-days</span>
+</div>
+<input checked="" class="w-4 h-4 rounded bg-surface-container-lowest accent-primary" type="checkbox"/>
+</div>
+<button class="w-full py-space-xs bg-primary text-on-primary font-label-sm text-label-sm uppercase font-bold rounded shadow-sm hover:bg-primary-fixed transition-colors mt-space-sm" id="save-threshold-btn" type="button">
+                Commit Protocols
+              </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Toast Notification Indicator (Floating) -->
+<div class="hidden fixed bottom-6 right-6 z-50 bg-surface-container-highest px-space-md py-space-sm rounded shadow-2xl flex items-center gap-space-sm transition-all duration-300" id="sync-toast">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span class="font-label-md text-label-md text-on-surface" id="toast-message">Google Sheet row synced successfully.</span>
+</div>
+<!-- 3. Grouped Habit Checklists (2x2 Asymmetric Bento Matrix) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- GROUP 1: Physical Anvil -->
+<div class="bg-surface-container-low rounded p-space-lg shadow-md flex flex-col justify-between relative group hover:shadow-lg transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">fitness_center</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase text-outline tracking-wider block">Discipline I</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight">Physical Vessel</h2>
+</div>
+</div>
+<span class="font-label-sm text-label-sm uppercase px-space-sm py-1 bg-primary/10 text-primary rounded font-semibold">2 / 2 Cleared</span>
+</div>
+<!-- Habit 1.1 -->
+<div class="space-y-space-sm">
+<div class="habit-row flex items-start gap-space-md p-space-sm rounded bg-surface-container/60 hover:bg-surface-container transition-colors cursor-pointer" data-id="h-gym">
+<button class="habit-checkbox w-6 h-6 rounded bg-primary text-on-primary flex items-center justify-center flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(245,158,11,0.4)]" type="button">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</button>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-sm">
+<span class="habit-title font-body-lg text-body-lg text-on-surface line-through opacity-80 font-medium truncate">Gym (Strength / Hypertrophy Split)</span>
+<span class="habit-time font-label-sm text-[10px] text-primary flex-shrink-0">07:15 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Winter squat block session logged • 4 sets heavy + mobility protocol</p>
+</div>
+</div>
+<!-- Habit 1.2 -->
+<div class="habit-row flex items-start gap-space-md p-space-sm rounded bg-surface-container/60 hover:bg-surface-container transition-colors cursor-pointer" data-id="h-water">
+<button class="habit-checkbox w-6 h-6 rounded bg-primary text-on-primary flex items-center justify-center flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(245,158,11,0.4)]" type="button">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</button>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-sm">
+<span class="habit-title font-body-lg text-body-lg text-on-surface line-through opacity-80 font-medium truncate">3–4 Liters Cold Water</span>
+<span class="habit-time font-label-sm text-[10px] text-primary flex-shrink-0">19:40 PM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Hydration goal reached • 3.5L consumed with electrolytes</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>Somatic baseline: Optimal</span>
+<span class="flex items-center gap-1 text-primary"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> 100% Group Rate</span>
+</div>
+</div>
+<!-- GROUP 2: Mental & Spiritual -->
+<div class="bg-surface-container-low rounded p-space-lg shadow-md flex flex-col justify-between relative group hover:shadow-lg transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase text-outline tracking-wider block">Discipline II</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight">Mental &amp; Spiritual</h2>
+</div>
+</div>
+<span class="font-label-sm text-label-sm uppercase px-space-sm py-1 bg-surface-container-high text-on-surface-variant rounded font-semibold">2 / 3 Cleared</span>
+</div>
+<div class="space-y-space-sm">
+<!-- Habit 2.1 -->
+<div class="habit-row flex items-start gap-space-md p-space-sm rounded bg-surface-container/60 hover:bg-surface-container transition-colors cursor-pointer" data-id="h-prayer">
+<button class="habit-checkbox w-6 h-6 rounded bg-primary text-on-primary flex items-center justify-center flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(245,158,11,0.4)]" type="button">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</button>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-sm">
+<span class="habit-title font-body-lg text-body-lg text-on-surface line-through opacity-80 font-medium truncate">Daily Prayer &amp; Gratitude</span>
+<span class="habit-time font-label-sm text-[10px] text-primary flex-shrink-0">06:30 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Dawn devotion and evening examination of conscience</p>
+</div>
+</div>
+<!-- Habit 2.2 (Pending) -->
+<div class="habit-row flex items-start gap-space-md p-space-sm rounded bg-surface-container/30 hover:bg-surface-container transition-colors cursor-pointer" data-id="h-meditation">
+<button class="habit-checkbox w-6 h-6 rounded bg-surface-container-highest text-transparent flex items-center justify-center flex-shrink-0 mt-0.5 hover:bg-surface-bright transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</button>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-sm">
+<span class="habit-title font-body-lg text-body-lg text-on-surface font-medium truncate">Meditation &amp; Breathwork</span>
+<span class="habit-time font-label-sm text-[10px] text-outline flex-shrink-0">Pending</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline mt-0.5">15 min box breathing / thesis cognitive reset</p>
+</div>
+</div>
+<!-- Habit 2.3 -->
+<div class="habit-row flex items-start gap-space-md p-space-sm rounded bg-surface-container/60 hover:bg-surface-container transition-colors cursor-pointer" data-id="h-journal">
+<button class="habit-checkbox w-6 h-6 rounded bg-primary text-on-primary flex items-center justify-center flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(245,158,11,0.4)]" type="button">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</button>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-sm">
+<span class="habit-title font-body-lg text-body-lg text-on-surface line-through opacity-80 font-medium truncate">Stoic Journaling</span>
+<span class="habit-time font-label-sm text-[10px] text-primary flex-shrink-0">20:30 PM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Kaizen reflection • Identified postgraduate procrastination trigger</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>Stillness quota: Active</span>
+<span class="text-tertiary">67% Group Rate</span>
+</div>
+</div>
+<!-- GROUP 3: Professional (Winter Arc Focus) -->
+<div class="bg-surface-container-low rounded p-space-lg shadow-md flex flex-col justify-between relative group hover:shadow-lg transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase text-outline tracking-wider block">Discipline III</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight">Professional Arc</h2>
+</div>
+</div>
+<span class="font-label-sm text-label-sm uppercase px-space-sm py-1 bg-surface-container-high text-on-surface-variant rounded font-semibold">2 / 3 Cleared</span>
+</div>
+<div class="space-y-space-sm">
+<!-- Habit 3.1 (Weekly Target) -->
+<div class="habit-row flex items-start gap-space-md p-space-sm rounded bg-surface-container/60 hover:bg-surface-container transition-colors cursor-pointer" data-id="h-mentor">
+<button class="habit-checkbox w-6 h-6 rounded bg-primary text-on-primary flex items-center justify-center flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(245,158,11,0.4)]" type="button">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</button>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs truncate">
+<span class="habit-title font-body-lg text-body-lg text-on-surface line-through opacity-80 font-medium truncate">Mentor Union Advisory Call</span>
+<span class="px-1.5 py-0.5 rounded bg-primary/10 text-primary font-label-sm text-[9px] uppercase tracking-wider">Weekly Quota</span>
+</div>
+<span class="habit-time font-label-sm text-[10px] text-primary flex-shrink-0">11:00 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">30-min thesis review with Dr. Vance • Methodology greenlit</p>
+</div>
+</div>
+<!-- Habit 3.2 (Pending & Weekly Target) -->
+<div class="habit-row flex items-start gap-space-md p-space-sm rounded bg-surface-container/30 hover:bg-surface-container transition-colors cursor-pointer" data-id="h-product">
+<button class="habit-checkbox w-6 h-6 rounded bg-surface-container-highest text-transparent flex items-center justify-center flex-shrink-0 mt-0.5 hover:bg-surface-bright transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</button>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs truncate">
+<span class="habit-title font-body-lg text-body-lg text-on-surface font-medium truncate">Product Shipped + GitHub Docs</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-outline font-label-sm text-[9px] uppercase tracking-wider">Weekly Quota</span>
+</div>
+<span class="habit-time font-label-sm text-[10px] text-outline flex-shrink-0">Pending</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline mt-0.5">Release notes tag v0.8.2 and update API markdown</p>
+</div>
+</div>
+<!-- Habit 3.3 -->
+<div class="habit-row flex items-start gap-space-md p-space-sm rounded bg-surface-container/60 hover:bg-surface-container transition-colors cursor-pointer" data-id="h-portfolio">
+<button class="habit-checkbox w-6 h-6 rounded bg-primary text-on-primary flex items-center justify-center flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(245,158,11,0.4)]" type="button">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</button>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-sm">
+<span class="habit-title font-body-lg text-body-lg text-on-surface line-through opacity-80 font-medium truncate">Portfolio Systems Architecture</span>
+<span class="habit-time font-label-sm text-[10px] text-primary flex-shrink-0">16:45 PM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Interactive distributed system blueprint embedded</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>Weekly targets: 1/2 complete</span>
+<span class="text-primary-container">67% Group Rate</span>
+</div>
+</div>
+<!-- GROUP 4: Content & Articulation -->
+<div class="bg-surface-container-low rounded p-space-lg shadow-md flex flex-col justify-between relative group hover:shadow-lg transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase text-outline tracking-wider block">Discipline IV</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight">Content &amp; Speech</h2>
+</div>
+</div>
+<span class="font-label-sm text-label-sm uppercase px-space-sm py-1 bg-surface-container-high text-on-surface-variant rounded font-semibold">2 / 3 Cleared</span>
+</div>
+<div class="space-y-space-sm">
+<!-- Habit 4.1 (Weekly Target - Pending) -->
+<div class="habit-row flex items-start gap-space-md p-space-sm rounded bg-surface-container/30 hover:bg-surface-container transition-colors cursor-pointer" data-id="h-substack">
+<button class="habit-checkbox w-6 h-6 rounded bg-surface-container-highest text-transparent flex items-center justify-center flex-shrink-0 mt-0.5 hover:bg-surface-bright transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</button>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs truncate">
+<span class="habit-title font-body-lg text-body-lg text-on-surface font-medium truncate">Substack Winter Research Essay</span>
+<span class="px-1.5 py-0.5 rounded bg-secondary-container/20 text-secondary font-label-sm text-[9px] uppercase tracking-wider">Weekly Target</span>
+</div>
+<span class="habit-time font-label-sm text-[10px] text-outline flex-shrink-0">Pending</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline mt-0.5">Section 2 draft in progress • Topic: Asynchronous Consensus</p>
+</div>
+</div>
+<!-- Habit 4.2 -->
+<div class="habit-row flex items-start gap-space-md p-space-sm rounded bg-surface-container/60 hover:bg-surface-container transition-colors cursor-pointer" data-id="h-speech">
+<button class="habit-checkbox w-6 h-6 rounded bg-primary text-on-primary flex items-center justify-center flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(245,158,11,0.4)]" type="button">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</button>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-sm">
+<span class="habit-title font-body-lg text-body-lg text-on-surface line-through opacity-80 font-medium truncate">Speech Therapy Video Practice</span>
+<span class="habit-time font-label-sm text-[10px] text-primary flex-shrink-0">14:10 PM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">10-minute cadence and thoracic pacing exercise captured</p>
+</div>
+</div>
+<!-- Habit 4.3 -->
+<div class="habit-row flex items-start gap-space-md p-space-sm rounded bg-surface-container/60 hover:bg-surface-container transition-colors cursor-pointer" data-id="h-deepstash">
+<button class="habit-checkbox w-6 h-6 rounded bg-primary text-on-primary flex items-center justify-center flex-shrink-0 mt-0.5 shadow-[0_0_8px_rgba(245,158,11,0.4)]" type="button">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</button>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-space-sm">
+<span class="habit-title font-body-lg text-body-lg text-on-surface line-through opacity-80 font-medium truncate">Deepstash Module Synthesis</span>
+<span class="habit-time font-label-sm text-[10px] text-primary flex-shrink-0">18:05 PM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Curated 3 mental models on cognitive endurance in isolation</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>Vocal resonance: Clear</span>
+<span class="text-secondary">67% Group Rate</span>
+</div>
+</div>
+</div>
+<!-- 4. Postgraduate Day Note / Thesis Log (Expandable Workstation) -->
+<div class="mt-space-lg bg-surface-container-low rounded p-space-lg shadow-md">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">edit_note</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Postgraduate Codex • Daily Research Note</h3>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Field insights, thesis progress, and psychological state</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-outline hidden sm:inline" id="note-auto-status">Draft saved to row #104</span>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface" id="toggle-note-btn" type="button">
+<span class="material-symbols-outlined text-[20px]">unfold_less</span>
+</button>
+</div>
+</div>
+<div class="space-y-space-sm" id="note-body">
+<textarea class="w-full bg-surface-container-lowest rounded p-space-md text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none focus:bg-surface-container transition-all resize-y shadow-inner leading-relaxed" id="daily-postgraduate-notes" placeholder="Document specific thesis roadblocks, literature review citations, or stoic observations regarding willpower and cognitive fatigue..." rows="4">Nov 14: Successfully resolved the concurrency bug in the consensus simulator. Meeting with Vance confirmed that chapter 4 can lean heavily into the empirical findings rather than pure mathematical proof. Energy dipped around 15:30—countered with a cold shower and 20-min non-sleep deep rest. Meditation still pending for the night session.</textarea>
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-primary uppercase bg-primary/10 px-2 py-0.5 rounded">Tag: Thesis-Ch4</span>
+<span class="font-label-sm text-label-sm text-tertiary uppercase bg-tertiary/10 px-2 py-0.5 rounded">Vessel: Resilient</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="font-label-sm text-label-sm uppercase px-space-md py-1.5 bg-primary text-on-primary font-bold rounded shadow-sm hover:bg-primary-fixed transition-colors" id="save-note-btn" type="button">
+            Append to Ledger
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Weekly Arc Horizon Strip (Contextual Guidance) -->
+<div class="mt-space-lg p-space-md bg-surface-container-lowest rounded shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded bg-surface-container-high flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">all_inclusive</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface uppercase font-bold tracking-wider">Weekly Quota Status (Week 7 of 13)</h4>
+<p class="font-body-sm text-body-sm text-outline">Weekly target habits (Mentor Call, GitHub Release, Substack) evaluate on Sunday at 23:59. Current fulfillment: 66% (2/3 complete).</p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs flex-shrink-0">
+<div class="w-7 h-7 rounded bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm font-bold" title="Mon: 90%">M</div>
+<div class="w-7 h-7 rounded bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm font-bold" title="Tue: 81%">T</div>
+<div class="w-7 h-7 rounded bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm font-bold" title="Wed: 100%">W</div>
+<div class="w-7 h-7 rounded bg-primary-container text-on-primary flex items-center justify-center font-label-sm text-label-sm font-bold shadow-[0_0_8px_rgba(245,158,11,0.5)]" title="Thu: 64% (In Progress)">T</div>
+<div class="w-7 h-7 rounded bg-surface-container-high text-outline flex items-center justify-center font-label-sm text-label-sm" title="Fri">F</div>
+<div class="w-7 h-7 rounded bg-surface-container-high text-outline flex items-center justify-center font-label-sm text-label-sm" title="Sat">S</div>
+<div class="w-7 h-7 rounded bg-surface-container-high text-outline flex items-center justify-center font-label-sm text-label-sm" title="Sun">S</div>
+</div>
+</div>
+</div>
+<script>
+  (function initTracker() {
+    const TOTAL_HABITS = 11;
+    let completedCount = 7;
+    let threshold = 75;
+
+    const strikeCountEl = document.getElementById('strike-count');
+    const strikePercentEl = document.getElementById('strike-percentage');
+    const progressFillEl = document.getElementById('header-progress-fill');
+    const syncToast = document.getElementById('sync-toast');
+    const toastMsg = document.getElementById('toast-message');
+    const syncLabel = document.getElementById('sync-label');
+    const syncTimestamp = document.getElementById('sync-timestamp');
+    const syncIcon = document.getElementById('sync-icon');
+
+    function updateMetrics() {
+      const pct = Math.round((completedCount / TOTAL_HABITS) * 100);
+      strikeCountEl.textContent = completedCount;
+      strikePercentEl.textContent = pct + '%';
+      progressFillEl.style.width = pct + '%';
+
+      if (pct >= threshold) {
+        strikePercentEl.className = 'ml-space-sm px-space-sm py-0.5 rounded bg-primary text-on-primary font-label-md text-label-md font-bold shadow-[0_0_10px_rgba(245,158,11,0.4)]';
+      } else {
+        strikePercentEl.className = 'ml-space-sm px-space-sm py-0.5 rounded bg-surface-container-highest text-primary font-label-md text-label-md font-bold';
+      }
+    }
+
+    function triggerToast(message) {
+      if (!syncToast) return;
+      toastMsg.textContent = message;
+      syncToast.classList.remove('hidden');
+      setTimeout(() => {
+        syncToast.classList.add('hidden');
+      }, 3000);
+    }
+
+    function recordSync() {
+      const now = new Date();
+      const timeStr = now.toTimeString().split(' ')[0];
+      syncTimestamp.textContent = 'Last commit: ' + timeStr;
+      syncLabel.textContent = 'Auto-saved to Sheets';
+      triggerToast('Google Sheet row synced: ' + completedCount + '/' + TOTAL_HABITS + ' habits at ' + timeStr);
+    }
+
+    // Toggle Habit Checkbox
+    document.querySelectorAll('.habit-row').forEach(row => {
+      row.addEventListener('click', function(e) {
+        // Prevent toggle if clicking links inside
+        if (e.target.tagName.toLowerCase() === 'a') return;
+
+        const btn = this.querySelector('.habit-checkbox');
+        const title = this.querySelector('.habit-title');
+        const timeEl = this.querySelector('.habit-time');
+        const isChecked = btn.classList.contains('bg-primary');
+
+        if (isChecked) {
+          // Uncheck
+          btn.classList.remove('bg-primary', 'text-on-primary', 'shadow-[0_0_8px_rgba(245,158,11,0.4)]');
+          btn.classList.add('bg-surface-container-highest', 'text-transparent');
+          title.classList.remove('line-through', 'opacity-80');
+          timeEl.textContent = 'Pending';
+          timeEl.classList.remove('text-primary');
+          timeEl.classList.add('text-outline');
+          this.classList.replace('bg-surface-container/60', 'bg-surface-container/30');
+          completedCount = Math.max(0, completedCount - 1);
+        } else {
+          // Check
+          btn.classList.remove('bg-surface-container-highest', 'text-transparent');
+          btn.classList.add('bg-primary', 'text-on-primary', 'shadow-[0_0_8px_rgba(245,158,11,0.4)]');
+          title.classList.add('line-through', 'opacity-80');
+          const now = new Date();
+          const hours = String(now.getHours()).padStart(2, '0');
+          const mins = String(now.getMinutes()).padStart(2, '0');
+          timeEl.textContent = hours + ':' + mins + ' ' + (now.getHours() >= 12 ? 'PM' : 'AM');
+          timeEl.classList.remove('text-outline');
+          timeEl.classList.add('text-primary');
+          this.classList.replace('bg-surface-container/30', 'bg-surface-container/60');
+          completedCount = Math.min(TOTAL_HABITS, completedCount + 1);
+        }
+
+        updateMetrics();
+        recordSync();
+      });
+    });
+
+    // Calendar Jump Tray Toggle
+    const jumpBtn = document.getElementById('toggle-jump-calendar');
+    const jumpTray = document.getElementById('calendar-jump-tray');
+    if (jumpBtn && jumpTray) {
+      jumpBtn.addEventListener('click', () => {
+        jumpTray.classList.toggle('hidden');
+      });
+    }
+
+    // Force Sync Trigger
+    const forceSyncBtn = document.getElementById('force-sync-btn');
+    if (forceSyncBtn) {
+      forceSyncBtn.addEventListener('click', () => {
+        syncIcon.classList.add('animate-spin');
+        triggerToast('Pinging Google Apps Script endpoint...');
+        setTimeout(() => {
+          recordSync();
+        }, 600);
+      });
+    }
+
+    // Settings Popover Toggle
+    const settingsBtn = document.getElementById('forge-settings-btn');
+    const settingsModal = document.getElementById('forge-settings-modal');
+    const closeSettingsBtn = document.getElementById('close-settings-btn');
+    const saveThresholdBtn = document.getElementById('save-threshold-btn');
+    const slider = document.getElementById('threshold-slider');
+    const thresholdVal = document.getElementById('threshold-val');
+
+    if (settingsBtn && settingsModal) {
+      settingsBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        settingsModal.classList.toggle('hidden');
+      });
+      closeSettingsBtn?.addEventListener('click', () => {
+        settingsModal.classList.add('hidden');
+      });
+      slider?.addEventListener('input', (e) => {
+        threshold = Number(e.target.value);
+        if (thresholdVal) thresholdVal.textContent = threshold + '%';
+        updateMetrics();
+      });
+      saveThresholdBtn?.addEventListener('click', () => {
+        settingsModal.classList.add('hidden');
+        triggerToast('Threshold updated: ' + threshold + '% required for pass');
+      });
+      document.addEventListener('click', (e) => {
+        if (!settingsModal.contains(e.target) && e.target !== settingsBtn) {
+          settingsModal.classList.add('hidden');
+        }
+      });
+    }
+
+    // Notes Expand/Collapse
+    const toggleNoteBtn = document.getElementById('toggle-note-btn');
+    const noteBody = document.getElementById('note-body');
+    if (toggleNoteBtn && noteBody) {
+      toggleNoteBtn.addEventListener('click', () => {
+        noteBody.classList.toggle('hidden');
+        const icon = toggleNoteBtn.querySelector('span');
+        if (noteBody.classList.contains('hidden')) {
+          icon.textContent = 'unfold_more';
+        } else {
+          icon.textContent = 'unfold_less';
+        }
+      });
+    }
+
+    // Notes Save Button
+    const saveNoteBtn = document.getElementById('save-note-btn');
+    const noteStatus = document.getElementById('note-auto-status');
+    if (saveNoteBtn) {
+      saveNoteBtn.addEventListener('click', () => {
+        if (noteStatus) noteStatus.textContent = 'Ledger appended at ' + new Date().toLocaleTimeString();
+        triggerToast('Postgraduate thesis codex entry recorded in Google Sheets.');
+      });
+    }
+
+    // Day Navigation Stubs
+    document.getElementById('prev-day-btn')?.addEventListener('click', () => {
+      triggerToast('Loading log for Wednesday, Nov 13, 2024...');
+    });
+    document.getElementById('next-day-btn')?.addEventListener('click', () => {
+      triggerToast('Accessing future anvil node: Nov 15, 2024 (Standby)');
+    });
+  })();
+</script></div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/20 py-space-md"><div class="max-w-7xl mx-auto px-margin flex flex-col sm:flex-row items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-outline text-[16px]">ac_unit</span><span class="font-label-sm text-label-sm uppercase text-outline tracking-widest">THE WYNTER ARC PROTOCOL • TEMPERED STEEL • 90-DAY GAUNTLET</span></div><div class="font-label-sm text-label-sm uppercase text-outline-variant tracking-wider">© 2024 MASTERY DIVISION. DISCIPLINE OVER MOTIVATION.</div></div></footer></body></html>
