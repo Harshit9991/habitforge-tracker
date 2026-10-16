@@ -140,16 +140,26 @@
     replaceState(n);
   }
 
-  /* ---- routing / viewport ---- */
-  var MQ = window.matchMedia('(max-width: 767px)');
-  function routeViewport() {
-    var mobilePage = document.documentElement.getAttribute('data-view') === 'mobile';
-    var file = location.pathname.split('/').pop() || 'index.html';
-    if (MQ.matches && !mobilePage) location.replace('m/' + file + location.search + location.hash);
-    else if (!MQ.matches && mobilePage) location.replace('../' + file + location.search + location.hash);
+  /* ---- auth session ---- */
+  var AUTH_KEY = 'habitforge:auth:v1';
+  function authSession() {
+    try { var s = JSON.parse(localStorage.getItem(AUTH_KEY) || 'null'); if (s && s.exp && s.exp > Date.now()) return s; } catch (e) {}
+    return null;
   }
-  routeViewport();
-  (MQ.addEventListener ? MQ.addEventListener('change', routeViewport) : MQ.addListener(routeViewport));
+
+  /* ---- routing: auth gate + viewport ---- */
+  var MQ = window.matchMedia('(max-width: 767px)');
+  function route() {
+    var page = document.documentElement.getAttribute('data-page') || 'app';
+    var file = location.pathname.split('/').pop() || 'index.html';
+    if (page !== 'signin' && !authSession()) file = 'index.html';
+    else if (page === 'signin' && authSession()) file = 'dashboard.html';
+    var path = (MQ.matches ? '/m/' : '/') + file;
+    var cur = location.pathname === '/' ? '/index.html' : location.pathname;
+    if (cur !== path) location.replace(path + location.search + location.hash);
+  }
+  route();
+  (MQ.addEventListener ? MQ.addEventListener('change', route) : MQ.addListener(route));
 
   var toastT;
   function toast(msg) {
@@ -172,3 +182,4 @@
     setCold: function (v) { COLD = !!v; }, isCold: function () { return COLD; }
   };
 })();
+

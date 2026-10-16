@@ -216,3 +216,4 @@ if __name__ == '__main__':
     open('index.html', 'w').write(dash_desktop())
     open('m/index.html', 'w').write(dash_mobile())
     print('built all')
+

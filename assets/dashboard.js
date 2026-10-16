@@ -244,3 +244,4 @@
   setInterval(function () { if (!document.hidden) render(); }, 60000);
   window.addEventListener('storage', render);
 })();
+
