@@ -43,7 +43,7 @@
       { sel: '#day-label', title: 'Day navigator', body: 'Step through the campaign or jump to any date. Future days stay read-only.' },
       { sel: '#toggle-all-btn', title: 'Strike the day', body: 'Tap a habit to log a strike, or mark the whole day at once. Reset clears the viewed day.' },
       { sel: '#daily-postgraduate-notes', title: 'Field notes', body: 'A journal per day. It autosaves as you type.' },
-      { sel: '#forge-settings-btn', title: 'Forge settings', body: 'Tune the threshold, review the streak rule, or restart the campaign from today.' },
+      { sel: '#forge-settings-btn', title: 'Forge settings', body: 'Two resets live here. Restart Campaign erases your logs but keeps the habits. Erase All Data (the red one) wipes everything to zero - habits, logs and settings.' },
       { sel: 'a[data-path="dashboard"]', title: 'Back to the Dashboard', body: 'Curves, streaks and the heatmap update as you log. Tour complete - forge on.' }
     ],
     'tracker:mobile': [
@@ -51,7 +51,7 @@
       { sel: '#dateLabel', title: 'Day switcher', body: 'Move through the campaign with the arrows. Future days stay read-only.' },
       { sel: '#markAllBtn', title: 'Strike the day', body: 'Tap a habit to log it, or mark the whole day. Reset clears the viewed day.' },
       { sel: '#noteArea', title: 'Field notes', body: 'A journal per day. It autosaves as you type.' },
-      { sel: '#toggleThresholdBtn', title: 'Threshold & restart', body: 'Tune the temper threshold or restart the campaign from this panel.' },
+      { sel: '#toggleThresholdBtn', title: 'Threshold & resets', body: 'Two resets live here. Restart Campaign clears logs but keeps habits. Erase All Data (the red one) wipes everything to zero.' },
       { sel: 'a[data-path="dashboard"]', title: 'Back to the Dashboard', body: 'Stats, streaks and the heatmap update as you log. Tour complete - forge on.' }
     ]
   };

@@ -5,7 +5,7 @@
   var MOBILE = document.documentElement.getAttribute('data-view') === 'mobile';
   var $ = function (id) { return document.getElementById(id); };
   var cur = H.clampDate(H.today());
-  var ui = { addFor: null, addCad: 'daily', addTarget: 3, editing: null, delArm: null, resetArm: false, restartArm: false };
+  var ui = { addFor: null, addCad: 'daily', addTarget: 3, editing: null, delArm: null, resetArm: false, restartArm: false, wipeArm: false };
   var MICON = ['text-primary-container', 'text-tertiary', 'text-secondary', 'text-primary-fixed-dim'];
 
   function isFuture(d) { return d > H.today(); }
@@ -248,6 +248,11 @@
       ui.restartArm = false; var f = H.fresh(); f.threshold = S.threshold; f.habits = S.habits; H.replaceState(f); S = H.S; cur = H.clampDate(H.today()); btn.textContent = label; render(); H.toast('Campaign restarted from today');
     }
     var rb = $('restart-btn'); if (rb) { var lab = rb.textContent; rb.addEventListener('click', function () { restart(rb, lab); }); }
+    function wipe(btn, label) {
+      if (!ui.wipeArm) { ui.wipeArm = true; btn.textContent = 'Confirm: resets everything to zero'; setTimeout(function () { ui.wipeArm = false; btn.textContent = label; }, 3500); return; }
+      ui.wipeArm = false; H.replaceState(H.fresh()); S = H.S; cur = H.clampDate(H.today()); btn.textContent = label; render(); H.toast('All data reset to zero');
+    }
+    var wb = $('wipe-btn'); if (wb) { var wlab = wb.textContent; wb.addEventListener('click', function () { wipe(wb, wlab); }); }
     var noteEl = $('daily-postgraduate-notes') || $('noteArea'), noteSt = $('note-auto-status') || $('noteStatus'), tm;
     noteEl.addEventListener('input', function () { clearTimeout(tm); noteSt.textContent = 'Typing...'; tm = setTimeout(function () { S.notes[cur] = noteEl.value; H.save(); noteSt.textContent = MOBILE ? 'Draft stored locally' : 'Draft saved locally'; }, 500); });
     $('save-note-btn').addEventListener('click', function () { clearTimeout(tm); S.notes[cur] = noteEl.value; if (!noteEl.value.trim()) delete S.notes[cur]; H.save(); noteSt.textContent = MOBILE ? 'Saved' : 'Saved to ledger'; H.toast('Note saved'); });
