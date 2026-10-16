@@ -10,19 +10,6 @@
     { id: 2, name: 'Professional Arc', icon: 'terminal', roman: 'III', base: 'Shipping cadence' },
     { id: 3, name: 'Content & Craft', icon: 'mic', roman: 'IV', base: 'Vocal resonance' }
   ];
-  var STARTERS = [
-    [0, 'Gym (Strength / Hypertrophy Split)', 'Heavy compound lifts + mobility protocol', 'daily', 1],
-    [0, '3-4 Liters Cold Water', 'Hydration goal with electrolytes', 'daily', 1],
-    [1, 'Daily Prayer & Gratitude', 'Dawn devotion and evening examination', 'daily', 1],
-    [1, 'Meditation & Breathwork', '15 min box breathing / cognitive reset', 'daily', 1],
-    [1, 'Stoic Journaling', 'Kaizen reflection and trigger review', 'daily', 1],
-    [2, 'Mentor Advisory Call', '30-min review with your mentor', 'weekly', 1],
-    [2, 'Product Shipped + GitHub Docs', 'Release notes and updated docs', 'weekly', 2],
-    [2, 'Portfolio Systems Architecture', 'Interactive system blueprint work', 'daily', 1],
-    [3, 'Substack Winter Research Essay', 'Draft, edit or publish a section', 'weekly', 2],
-    [3, 'Speech Practice Video', '10-minute cadence and pacing exercise', 'daily', 1],
-    [3, 'Deepstash Module Synthesis', 'Curate mental models from reading', 'daily', 1]
-  ];
 
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function iso(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
@@ -45,7 +32,6 @@
   function fresh() {
     var t = today();
     var s = { v: 1, start: t, threshold: 75, pacing: 'weighted', habits: [], logs: {}, notes: {}, savedAt: Date.now() };
-    STARTERS.forEach(function (h, i) { s.habits.push({ id: 'h-' + i, pillar: h[0], title: h[1], desc: h[2], cadence: h[3], target: h[4] }); });
     return s;
   }
   function valid(s) {
@@ -123,23 +109,6 @@
   function hasAnyLogs() { if (COLD) return false; return Object.keys(S.logs).some(function (k) { return Object.keys(S.logs[k]).length; }); }
   function entryCount() { var n = 0; Object.keys(S.logs).forEach(function (k) { n += Object.keys(S.logs[k]).length; }); return n; }
 
-  /* ---- sample data ---- */
-  function seed() {
-    var r = 12345; function rnd() { r |= 0; r = r + 0x6D2B79F5 | 0; var t = Math.imul(r ^ r >>> 15, 1 | r); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }
-    var t = today(), start = addDays(t, -20);
-    var n = fresh(); n.start = start; n.threshold = S.threshold; n.pacing = S.pacing; n.habits = S.habits.slice(); n.notes = S.notes;
-    var times = ['06:30', '07:15', '08:10', '11:00', '14:10', '16:45', '18:05', '19:40', '20:30'];
-    for (var i = 0; i < 20; i++) {
-      var d = addDays(start, i), base = 0.62 + rnd() * 0.38; if (i === 4 || i === 12) base = 0.35 + rnd() * 0.15; if (i === 16) base = 0.9;
-      var l = {};
-      n.habits.forEach(function (h) { if (rnd() < base) l[h.id] = times[Math.floor(rnd() * times.length)]; });
-      if (i > 5 && i !== 12 && i !== 4 && i < 10) { n.habits.forEach(function (h, k) { if (k % 3 !== 0) l[h.id] = l[h.id] || '07:30'; }); }
-      n.logs[d] = l;
-    }
-    var l2 = {}; n.habits.slice(0, 7).forEach(function (h) { l2[h.id] = '07:15'; }); n.logs[t] = l2;
-    replaceState(n);
-  }
-
   /* ---- auth session ---- */
   var AUTH_KEY = 'habitforge:auth:v1';
   function authSession() {
@@ -175,11 +144,12 @@
   }
 
   window.HF = {
-    get S() { return S; }, save: save, replaceState: replaceState, fresh: fresh, seed: seed, toast: toast,
+    get S() { return S; }, save: save, replaceState: replaceState, fresh: fresh, toast: toast,
     PILLARS: PILLARS, MON: MON, pad: pad, iso: iso, parse: parse, addDays: addDays, diff: diff, today: today, monDay: monDay, nice: nice, shortNice: shortNice, dow: dow,
     weekStart: weekStart, time12: time12, esc: esc, uid: uid, campaign: campaign, clampDate: clampDate, score: score, need: need, met: met, streaks: streaks,
     weekCount: weekCount, weekTarget: weekTarget, lastN: lastN, pillarRate: pillarRate, avgPct: avgPct, hasAnyLogs: hasAnyLogs, entryCount: entryCount,
     setCold: function (v) { COLD = !!v; }, isCold: function () { return COLD; }
   };
 })();
+
 

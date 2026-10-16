@@ -214,7 +214,6 @@
       $('heat-mid').textContent = 'DAY ' + day + ' (' + pct.toFixed(1) + '%)'; $('heat-bar').style.width = pct.toFixed(1) + '%';
       $('heat-streak').textContent = s.st.cur + 'd'; $('heat-remain').textContent = frozen + ' DAYS REMAINING'; $('heat-pace').textContent = s.cons >= S.threshold ? 'On Track' : 'Behind';
       $('foot-state').textContent = cold ? 'No data yet • Log a strike in Tracker' : 'Telemetry clean • Local ledger active';
-      $('seed-wrap').innerHTML = cold ? '<button type="button" id="seed-btn" class="underline">Load sample</button>' : '';
     }
     $('pillar-bars').innerHTML = bars(last30);
     $('heat-host').innerHTML = heat();
@@ -236,7 +235,6 @@
     if (t.closest('#toggleDataState')) { forceCold = !forceCold; return render(); }
     if (t.closest('#cold-dismiss')) { if (forceCold) forceCold = false; else ui.dismissed = true; return render(); }
     if (t.closest('[data-settings-toggle]')) { var p = $('settingsPopover'); if (p) p.classList.toggle('hidden'); if (t.closest('#sel-threshold,#sel-pacing')) return; var ap = t.closest('button'); if (ap && /Apply/i.test(ap.textContent)) { S.threshold = +$('sel-threshold').value; S.pacing = $('sel-pacing').value; H.save(); render(); H.toast('Parameters applied'); } return; }
-    if (t.closest('#seed-btn')) { forceCold = false; H.seed(); S = H.S; render(); return H.toast('Sample ledger loaded'); }
     if (t.closest('#export-btn')) return csv();
     if (t.closest('#gear-btn') && !MOBILE) { var pp = $('settingsPopover'); pp.classList.toggle('hidden'); if (!pp.classList.contains('hidden')) pp.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
   });
@@ -244,4 +242,5 @@
   setInterval(function () { if (!document.hidden) render(); }, 60000);
   window.addEventListener('storage', render);
 })();
+
 
