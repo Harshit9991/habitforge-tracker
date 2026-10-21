@@ -9,7 +9,18 @@
     CHECKOUT_GAUNTLET: ''   /* Dodo Payments checkout link for The Gauntlet (90-day pass) */
   };
   var KEY = 'habitforge:billing:v1';
+  /* Owner testing exemption. Client-side only, just like the rest of this gate.
+     Read the current auth session on every check, including before auth.js loads.
+     Never persist a paid grant: signing out/switching accounts removes the exemption. */
+  function ownerExempt() {
+    try {
+      var s = JSON.parse(localStorage.getItem('habitforge:auth:v1') || 'null');
+      return !!(s && s.sub && s.exp > Date.now() && typeof s.email === 'string' &&
+        s.email.toLowerCase() === 'harshit.chebolu99@gmail.com');
+    } catch (e) { return false; }
+  }
   function entitled() {
+    if (ownerExempt()) return true;
     try { var e = JSON.parse(localStorage.getItem(KEY) || 'null'); return !!(e && e.plan); } catch (e) { return false; }
   }
   function grant(plan) { try { localStorage.setItem(KEY, JSON.stringify({ plan: plan, at: Date.now() })); } catch (e) {} }
