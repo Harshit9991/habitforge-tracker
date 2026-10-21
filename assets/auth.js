@@ -26,7 +26,9 @@
     if (!c || !c.sub || (cid && c.aud !== cid) || (c.exp && c.exp * 1000 < Date.now())) return;
     var s = { sub: c.sub, email: c.email || '', name: c.name || '', picture: c.picture || '', exp: Date.now() + SESSION_DAYS * 864e5 };
     try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {}
-    location.replace((window.matchMedia('(max-width: 767px)').matches ? '/m/' : '/') + 'dashboard.html');
+    var dest = (window.matchMedia('(max-width: 767px)').matches ? '/m/' : '/') + 'dashboard.html';
+    if (window.HFBilling) dest = HFBilling.afterSigninUrl(dest);
+    location.replace(dest);
   }
   function initSignin() {
     var host = document.getElementById('g_id_signin');
