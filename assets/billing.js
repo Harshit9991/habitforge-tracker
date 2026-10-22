@@ -6,7 +6,7 @@
      Tier model (frozen 22 Oct): FREE = the daily tracker for any signed-in user.
      PAID (lifetime, one-time) = the dashboard: insights, patterns, streaks, heatmap, export. */
   var CONFIG = {
-    ENFORCE: false,          /* true = signed-in users without an entitlement can't open the dashboard */
+    ENFORCE: true,           /* true = signed-in users without an entitlement can't open the dashboard */
     CHECKOUT_LIFETIME: 'https://checkout.dodopayments.com/buy/pdt_0NqHv2GHWEkdXBD90yHOT?quantity=1&redirect_url=https%3A%2F%2Fhabitforgetracker.in%2Fpricing.html'    /* Dodo Payments checkout link for the lifetime Crucible pass */
   };
   var KEY = 'habitforge:billing:v1';
@@ -30,7 +30,22 @@
   function plansUrl() { return pageUrl('pricing.html'); }
   function trackerUrl() { return pageUrl('tracker.html'); }
   function locked() { return !!CONFIG.ENFORCE && !entitled(); }
-  function requireAccess() { if (locked()) location.replace(plansUrl()); }
+  function requireAccess() {
+    if (!locked()) return;
+    /* Before bouncing, give the cloud one async re-check: right after a purchase the
+       entitlement row exists but the local grant may not have landed yet. */
+    if (window.HFCloud && HFCloud.whenUser) {
+      HFCloud.whenUser(function (u) {
+        if (!u) { location.replace(plansUrl()); return; }
+        HFCloud.checkEntitlement(u.email, function (row) {
+          if (row) { grant(row.plan || 'lifetime'); location.reload(); }
+          else location.replace(plansUrl());
+        });
+      }, 3500);
+      return;
+    }
+    location.replace(plansUrl());
+  }
   /* Free users land on the tracker (their tier); paid users go where they were headed. */
   function afterSigninUrl(fallback) { return locked() ? trackerUrl() : fallback; }
   function toast(msg) {

@@ -42,7 +42,7 @@
     return mem || fresh();
   }
   var S = load();
-  function save() { S.savedAt = Date.now(); mem = S; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  function save() { S.savedAt = Date.now(); mem = S; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} if (window.HFCloud && HFCloud.pushState) HFCloud.pushState(S); }
   function replaceState(n) { S = n; save(); }
 
   /* ---- campaign ---- */
