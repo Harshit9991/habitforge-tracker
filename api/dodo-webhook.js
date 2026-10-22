@@ -43,6 +43,25 @@ module.exports = async (req, res) => {
 
   let event;
   try { event = JSON.parse(rawBody); } catch (e) { return res.status(400).json({ error: 'bad json' }); }
+  // A successful FULL refund revokes the buyer's entitlement (refund.succeeded, is_partial=false).
+  if (event.type === 'refund.succeeded') {
+    const d = event.data || {};
+    if (d.is_partial) return res.status(200).json({ ignored: 'partial refund' });
+    const pid = d.payment_id || null;
+    if (!pid) return res.status(400).json({ error: 'missing payment id' });
+    const rv = await fetch(`${process.env.SUPABASE_URL}/rest/v1/entitlements?dodo_payment_id=eq.${encodeURIComponent(pid)}`, {
+      method: 'PATCH',
+      headers: {
+        apikey: process.env.SUPABASE_SERVICE_KEY,
+        Authorization: `Bearer ${process.env.SUPABASE_SERVICE_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ status: 'revoked' })
+    });
+    if (!rv.ok) return res.status(502).json({ error: 'supabase revoke failed', detail: await rv.text() });
+    return res.status(200).json({ ok: true, revoked: pid });
+  }
+
   if (event.type !== 'payment.succeeded') return res.status(200).json({ ignored: event.type || 'unknown' });
 
   const p = event.data || {};
