@@ -7,7 +7,7 @@
      PAID (lifetime, one-time) = the dashboard: insights, patterns, streaks, heatmap, export. */
   var CONFIG = {
     ENFORCE: false,          /* true = signed-in users without an entitlement can't open the dashboard */
-    CHECKOUT_LIFETIME: ''    /* Dodo Payments checkout link for the lifetime Crucible pass */
+    CHECKOUT_LIFETIME: 'https://checkout.dodopayments.com/buy/pdt_0NqHv2GHWEkdXBD90yHOT?quantity=1&redirect_url=https%3A%2F%2Fhabitforgetracker.in%2Fpricing.html'    /* Dodo Payments checkout link for the lifetime Crucible pass */
   };
   var KEY = 'habitforge:billing:v1';
   /* Owner testing exemption. Client-side only, just like the rest of this gate.
