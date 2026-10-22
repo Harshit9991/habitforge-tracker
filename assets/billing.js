@@ -1,12 +1,13 @@
 /* HabitForge billing: plan gate config, entitlement check, checkout routing. No dependencies. */
 (function () {
   'use strict';
-  /* MASTER SWITCH: keep ENFORCE false until the Dodo Payments checkout links below are set.
-     While false, the plans page and all CTAs are live but nothing is gated. */
+  /* MASTER SWITCH: keep ENFORCE false until the Dodo Payments checkout link below is set.
+     While false, the plans page and all CTAs are live but nothing is gated.
+     Tier model (frozen 22 Oct): FREE = the daily tracker for any signed-in user.
+     PAID (lifetime, one-time) = the dashboard: insights, patterns, streaks, heatmap, export. */
   var CONFIG = {
-    ENFORCE: false,         /* true = signed-in users without an entitlement are sent to the plans page */
-    CHECKOUT_EMBER: '',     /* Dodo Payments checkout link for The Ember (monthly) */
-    CHECKOUT_GAUNTLET: ''   /* Dodo Payments checkout link for The Gauntlet (90-day pass) */
+    ENFORCE: false,          /* true = signed-in users without an entitlement can't open the dashboard */
+    CHECKOUT_LIFETIME: ''    /* Dodo Payments checkout link for the lifetime Crucible pass */
   };
   var KEY = 'habitforge:billing:v1';
   /* Owner testing exemption. Client-side only, just like the rest of this gate.
@@ -25,10 +26,13 @@
   }
   function grant(plan) { try { localStorage.setItem(KEY, JSON.stringify({ plan: plan, at: Date.now() })); } catch (e) {} }
   function isMobile() { return window.matchMedia('(max-width: 767px)').matches; }
-  function plansUrl() { return (isMobile() ? '/m/' : '/') + 'pricing.html'; }
+  function pageUrl(name) { return (isMobile() ? '/m/' : '/') + name; }
+  function plansUrl() { return pageUrl('pricing.html'); }
+  function trackerUrl() { return pageUrl('tracker.html'); }
   function locked() { return !!CONFIG.ENFORCE && !entitled(); }
   function requireAccess() { if (locked()) location.replace(plansUrl()); }
-  function afterSigninUrl(fallback) { return locked() ? plansUrl() : fallback; }
+  /* Free users land on the tracker (their tier); paid users go where they were headed. */
+  function afterSigninUrl(fallback) { return locked() ? trackerUrl() : fallback; }
   function toast(msg) {
     if (window.H && H.toast) return H.toast(msg);
     var el = document.getElementById('hf-toast');
@@ -41,13 +45,29 @@
     clearTimeout(el._t); el._t = setTimeout(function () { el.style.display = 'none'; }, 2600);
   }
   function checkout(plan) {
-    var url = plan === 'gauntlet' ? CONFIG.CHECKOUT_GAUNTLET : CONFIG.CHECKOUT_EMBER;
+    var url = CONFIG.CHECKOUT_LIFETIME;
     if (url) { location.href = url; return; }
     toast('Checkout opens soon - Dodo wiring in progress');
   }
-  window.HFBilling = { CONFIG: CONFIG, entitled: entitled, grant: grant, locked: locked, requireAccess: requireAccess, afterSigninUrl: afterSigninUrl, plansUrl: plansUrl, checkout: checkout, toast: toast };
+  /* Dodo static payment links redirect back with ?payment_id=...&status=succeeded (and email).
+     A succeeded return grants the lifetime pass on this device and sends the user to the dashboard. */
+  function handleReturn() {
+    try {
+      if (!location.search) return;
+      var q = new URLSearchParams(location.search);
+      var ok = q.get('status') === 'succeeded' && (q.get('payment_id') || q.get('subscription_id'));
+      if (!ok) return;
+      grant('lifetime');
+      if (history && history.replaceState) history.replaceState(null, '', location.pathname);
+      toast('Crucible pass claimed - welcome in');
+      location.replace(pageUrl('dashboard.html'));
+    } catch (e) {}
+  }
+  window.HFBilling = { CONFIG: CONFIG, entitled: entitled, grant: grant, locked: locked, requireAccess: requireAccess, afterSigninUrl: afterSigninUrl, plansUrl: plansUrl, trackerUrl: trackerUrl, checkout: checkout, toast: toast };
 
-  /* Auto-gate protected pages. Sign-in and plans pages include this file too; they never redirect. */
+  /* Handle a payment return on any page, then auto-gate the dashboard only.
+     The tracker, sign-in and plans pages stay open to every signed-in user (free tier). */
+  handleReturn();
   var page = document.documentElement.getAttribute('data-page');
-  if (page !== 'signin' && page !== 'plans') requireAccess();
+  if (page === 'dashboard') requireAccess();
 })();

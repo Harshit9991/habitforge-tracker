@@ -192,7 +192,7 @@
     if (Object.prototype.hasOwnProperty.call(l, id)) delete l[id]; else l[id] = cur === H.today() ? nowHHMM() : '';
     H.save(); render();
   }
-  function addHabit() { if (window.HFBilling && HFBilling.locked()) { location.href = HFBilling.plansUrl(); return; }
+  function addHabit() {
     var inp = document.querySelector('.add-input'), v = (inp.value || '').trim();
     if (!v) { inp.classList.add('border-error'); inp.focus(); H.toast('Name your habit first'); return; }
     if (S.habits.some(function (h) { return h.pillar === ui.addFor && h.title.toLowerCase() === v.toLowerCase(); })) { inp.classList.add('border-error'); H.toast('That habit already exists here'); return; }
@@ -217,7 +217,7 @@
           ui.delArm = id; render(); setTimeout(function () { if (ui.delArm === id) { ui.delArm = null; render(); } }, 3000); return;
         }
         var pill = a.closest('[data-pillar]');
-        if (act === 'add-open') { if (window.HFBilling && HFBilling.locked()) { HFBilling.toast('The forge is gated - claim a pass'); setTimeout(function () { location.href = HFBilling.plansUrl(); }, 600); return; } var pid = +pill.getAttribute('data-pillar'); ui.addFor = ui.addFor === pid ? null : pid; ui.addText = ''; ui.focusAdd = true; return render(); }
+        if (act === 'add-open') { var pid = +pill.getAttribute('data-pillar'); ui.addFor = ui.addFor === pid ? null : pid; ui.addText = ''; ui.focusAdd = true; return render(); }
         if (act === 'add-cancel') { ui.addFor = null; return render(); }
         if (act === 'add-save') return addHabit();
         if (act === 'cad-daily') { ui.addText = document.querySelector('.add-input').value; ui.addCad = 'daily'; ui.focusAdd = true; return render(); }

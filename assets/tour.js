@@ -24,7 +24,7 @@
       { sel: '#kpis', title: 'Vitals at a glance', body: 'Monthly consistency vs your target, the current streak, weekly kaizen pacing, and where the ledger lives (this browser).' },
       { sel: '#chart-host', title: 'Execution curve', body: 'Daily completion against the temper line. Switch between 30 days, 90 days and the full arc.' },
       { sel: '#donut-host', title: 'Forged split', body: 'Share of strikes landed over the last 30 days, with per-discipline bars below.' },
-      { sel: '#kaizen-body', title: 'Weekly kaizen ledger', body: 'Every habit against its weekly target - met, in progress, or at risk. Export the ledger as CSV anytime.' },
+      { sel: '#kaizen-body', title: 'Weekly kaizen ledger', body: 'Every habit against its weekly target - met, in progress, or at risk.' },
       { sel: '#heat-host', title: 'Campaign heatmap', body: 'Every day of the 90-day arc. A day tempers amber once you beat the threshold.' },
       { sel: '#gear-btn', title: 'Tune the forge', body: 'Set the target threshold and the pacing algorithm here.' },
       { sel: 'a[data-path="daily-tracker"]', title: 'Next: the Daily Tracker', body: 'Forge habits and log strikes there. A short tour greets you on your first visit.' }

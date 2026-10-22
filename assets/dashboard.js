@@ -221,21 +221,12 @@
   }
   var ui = { dismissed: false };
 
-  function csv() {
-    var rows = [['date', 'habit', 'pillar', 'cadence', 'completed_at']];
-    Object.keys(S.logs).sort().forEach(function (d) { S.habits.forEach(function (h) { var l = S.logs[d]; if (Object.prototype.hasOwnProperty.call(l, h.id)) rows.push([d, h.title, (H.PILLARS[h.pillar] || {}).name || '', h.cadence === 'daily' ? 'daily' : 'weekly ' + h.target + 'x', l[h.id] || '']); }); });
-    var txt = rows.map(function (r) { return r.map(function (v) { v = String(v); if (/^[=+\-@]/.test(v)) v = "'" + v; return '"' + v.replace(/"/g, '""') + '"'; }).join(','); }).join('\n');
-    var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([txt], { type: 'text/csv' })); a.download = 'habitforge-ledger-' + H.today() + '.csv'; document.body.appendChild(a); a.click(); a.remove();
-    H.toast(rows.length > 1 ? 'Ledger exported (' + (rows.length - 1) + ' entries)' : 'Exported empty ledger');
-  }
-
   document.addEventListener('click', function (e) {
     var t = e.target, el;
     if ((el = t.closest('[data-range]'))) { range = +el.getAttribute('data-range'); return render(); }
     if (t.closest('#toggleDataState')) { forceCold = !forceCold; return render(); }
     if (t.closest('#cold-dismiss')) { if (forceCold) forceCold = false; else ui.dismissed = true; return render(); }
     if (t.closest('[data-settings-toggle]')) { var p = $('settingsPopover'); if (p) p.classList.toggle('hidden'); if (t.closest('#sel-threshold,#sel-pacing')) return; var ap = t.closest('button'); if (ap && /Apply/i.test(ap.textContent)) { S.threshold = +$('sel-threshold').value; S.pacing = $('sel-pacing').value; H.save(); render(); H.toast('Parameters applied'); } return; }
-    if (t.closest('#export-btn')) return csv();
     if (t.closest('#gear-btn') && !MOBILE) { var pp = $('settingsPopover'); pp.classList.toggle('hidden'); if (!pp.classList.contains('hidden')) pp.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
   });
   render();
