@@ -10,7 +10,7 @@ Date: 2026-10-24 (IST)
   - Website URL: https://www.habitforgetracker.in/
   - Industry: Other
   - Project ID: z2tmivhxug (this is the public tracking ID and is safe to share)
-  - Dashboard: https://clarity.microsoft.com/projects/view/z2tmivhxug
+  - Dashboard: https://clarity.microsoft.com/projects/view/z2tmivhxug/gettingstarted (the bare /projects/view/z2tmivhxug URL without a subpage shows a Clarity error page)
 - Sensitive-data rules (verified against the Clarity Terms of Use accepted at signup, https://clarity.microsoft.com/terms):
   - The Terms prohibit using Clarity "in connection with content which may contain sensitive user materials, such as health care, financial services or government-related information" (Section 1(b)(ii)) and bar knowingly disclosing GDPR-defined Sensitive Data, which includes health data, to Microsoft (Section 4.4(c)(ii)).
   - These restrictions apply regardless of the industry category chosen at setup, so picking "Other" is not an exemption. Habit names and reflections can touch health topics, which is why masking is mandatory before any install (see below).
