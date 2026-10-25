@@ -14,3 +14,6 @@ or signing out removes the exemption. This is client-side only, not a security
 boundary. `CONFIG.ENFORCE` stays off until checkout is ready.
 
 Billing regression tests: `node --test tests/billing.test.cjs`.
+
+---
+Deployment: automatic via Vercel Git integration.
