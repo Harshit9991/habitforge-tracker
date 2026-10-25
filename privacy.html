@@ -10,16 +10,65 @@ h2{color:#ffc174;font-size:1.1rem;margin:32px 0 6px}
 p,li{color:#d8c3ad}
 a{color:#38bdf8}
 .meta{color:#a08e7a;font-size:.9rem}
-</style></head><body><main>
+</style><script>
+/* HabitForge analytics loader: strip payment redirect params, load Clarity, wire consent.
+   Clarity project Setup is "cookies off by default": no cookies until consentv2 granted. */
+(function () {
+  function loadClarity(){
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,'clarity','script','z2tmivhxug');
+  }
+  function sanitizeAndLoad(){
+    try {
+      if (/[?&#](code|error|error_description|error_code)=/.test(location.href)) return false; /* OAuth in flight: do not touch, do not load */
+      var u = new URL(location.href), dirty = false;
+      ['payment_id','subscription_id','status','email'].forEach(function (k) {
+        if (u.searchParams.has(k)) { u.searchParams.delete(k); dirty = true; }
+      });
+      if (dirty && history.replaceState) history.replaceState(null, '', u.pathname + u.search + u.hash);
+    } catch (e) {}
+    loadClarity(); return true;
+  }
+  var tries=0, t=setInterval(function(){
+    if (sanitizeAndLoad() || ++tries>=40) clearInterval(t); /* fail safe: if OAuth params persist ~20s, skip analytics for this pageview */
+  }, 500);
+  function signal(state){ window.clarity('consentv2',{ad_Storage:state,analytics_Storage:state}); }
+  function store(v){ try{ localStorage.setItem('hf_analytics_consent',v); }catch(e){} }
+  function hide(){ var b=document.getElementById('hf-consent'); if(b) b.remove(); }
+  function banner(){
+    var saved=null; try{ saved=localStorage.getItem('hf_analytics_consent'); }catch(e){}
+    if(saved==='yes'){ signal('granted'); return; }
+    if(saved==='no'){ signal('denied'); return; }
+    var b=document.createElement('div'); b.id='hf-consent';
+    b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#191c21;color:#e1e2ea;font:14px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;padding:12px 16px;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;border-top:1px solid #534434';
+    b.innerHTML='<span>We use Microsoft Clarity on these pages to understand site use and improve HabitForge. Cookies are set only if you accept. Details in our <a href="privacy.html" style="color:#ffc174">privacy policy</a>.</span>';
+    var ok=document.createElement('button'); ok.type='button'; ok.textContent='Accept';
+    ok.style.cssText='background:#f59e0b;color:#2a1700;border:0;border-radius:6px;padding:8px 16px;font-weight:600;cursor:pointer';
+    ok.onclick=function(){ store('yes'); signal('granted'); hide(); };
+    var no=document.createElement('button'); no.type='button'; no.textContent='Decline';
+    no.style.cssText='background:transparent;color:#e1e2ea;border:1px solid #534434;border-radius:6px;padding:8px 16px;cursor:pointer';
+    no.onclick=function(){ store('no'); signal('denied'); hide(); };
+    b.appendChild(ok); b.appendChild(no);
+    (document.body||document.documentElement).appendChild(b);
+  }
+  if (document.readyState==='loading') document.addEventListener('DOMContentLoaded',banner); else banner();
+})();
+</script>
+
+</head><body><main>
 <h1>HabitForge Privacy Policy</h1>
-<p class="meta">Last updated: 17 October 2026</p>
+<p class="meta">Last updated: 25 October 2026</p>
 <p>HabitForge is a student habit tracker built as a course project. This page explains what it does with your information.</p>
 <h2>What we collect</h2>
 <p>When you choose "Sign in with Google", Google shares your name, email address and profile picture with HabitForge. We use them only to sign you in and show your name in the app. We do not request access to your Gmail, Drive, contacts or any other Google data.</p>
 <h2>Your habit data</h2>
-<p>The habits and logs you enter are stored in your own browser (local storage) on the device you use. They are not sent to a server and we cannot see them. Clearing your browser data, or using "Reset all data" in the app, deletes them.</p>
+<p>The habits and logs you enter are stored in your HabitForge account (hosted on Supabase) and sync across your signed-in devices. Only your signed-in account can read or change them. Entries saved before you sign in copy from your browser into your account on first login. Settings has two reset options: Restart Campaign clears your daily logs and keeps your habits; Erase All Data resets your habits and logs to a fresh start.</p>
 <h2>How we use it</h2>
-<p>Only to run the app for you. We do not sell, share or use your information for advertising, and we do not use analytics or tracking cookies.</p>
+<p>Only to run the app for you. We do not sell, share or use your information for advertising.</p>
+<h2>Analytics</h2>
+<p>On the sign-in, plans and privacy pages we use Microsoft Clarity to understand how visitors use those pages (behavioural metrics, heatmaps and session replay) so we can improve the product. Clarity sets cookies and similar identifiers only after you choose Accept on the analytics notice; if you decline, it collects only limited cookieless page-view data. These pages never show your habit data, and Clarity never receives your habits or logs. For how Microsoft collects and uses data, visit the <a href="https://privacy.microsoft.com/en-us/privacystatement">Microsoft Privacy Statement</a>.</p>
 <h2>Third parties</h2>
 <p>Sign-in is handled by Google Identity Services. The app is hosted on Vercel, which may keep standard server logs such as IP addresses. Fonts load from Google Fonts.</p>
 <h2>Your choices</h2>
